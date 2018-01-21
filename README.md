@@ -13,9 +13,12 @@ This package uses jsonschema to for validation: https://pypi.python.org/pypi/jso
 
 This package provides a flask route decorator to validate json payload.
 
-```python 
-from flask import Flask
+```python
+from flask import Flask, jsonify, g, url_for
 from flask_expects_json import expects_json
+# example imports
+from models import User
+from orm import NotUniqueError
 
 app = Flask(__name__)
 
@@ -36,20 +39,25 @@ def register():
     # if payload is invalid, request will be aborted with error code 400
     # if payload is valid it is stored in g.data
 
+    # do something with your data
     user = User().from_dict(g.data)
-        try:
+    try:
         user.save()
-    except (ValidationError, NotUniqueError) as e:
-        return abort(400, e.message)
+    except NotUniqueError as e:
+        # exception path: duplicate database entry
+        return jsonify(dict(message=e.message)), 409
 
-    resp = jsonify({'auth_token': user.encode_auth_token(), 'user': user.to_dict()})
+    # happy path: json response
+    resp = jsonify(dict(auth_token=user.encode_auth_token(), user=user.to_dict()})
     resp.headers['Location'] = url_for('users.get_user', user_id=user.id)
     return resp, 201
 ```
 
-The expected json payload is recognizable through schema. If schema is not met the requests aborts (400) with a hinting error message.
+The expected json payload is recognizable through "schema". If schema is not met the requests aborts (400) with a hinting error message.
 
 ```flask.request.get_json(force=True)``` is used to get the data. This means the mimetype of the request is ignored.
+
+Note on self-documentation: all input and output possibilities are clearly visible in this snippet. 
 
 ## Testing
 
