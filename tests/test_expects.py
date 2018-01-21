@@ -67,3 +67,6 @@ class TestExpects(unittest.TestCase):
             return 'happy'
         response = self.client.get('/', data=json.dumps(dict()))
         self.assertEqual(response.status_code, 200)
+
+    def test_fail(self):
+        raise Exception()
