@@ -8,12 +8,12 @@ def readme():
 
 setup(
     name='flask-expects-json',
-    description='Decorator for REST endpoints. Validate request data and store in g',
+    description='Decorator for REST endpoints in flask. Validate request data and store in g',
     long_description=readme(),
     url='https://qgit.de/py-lib/flask-expects-json',
 
     version='0.1',
-    licence='UNLICENSED',
+    licence='MIT',
 
     author='Alfred Melch',
     author_email='alfred.melch@gmx.de',
