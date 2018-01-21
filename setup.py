@@ -3,12 +3,12 @@ from setuptools import setup, find_packages
 
 def readme():
     with open('README.md') as f:
-        return f.read
+        return f.read()
 
 
 setup(
     name='flask-expects-json',
-    version='0.1.1',
+    version='1.0.0',
     description='Decorator for REST endpoints in flask. Validate JSON request data.',
     long_description=readme(),
     url='https://github.com/fischerfredl/flask-expects-json',
