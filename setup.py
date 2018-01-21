@@ -10,10 +10,11 @@ setup(
     name='flask-expects-json',
     description='Decorator for REST endpoints in flask. Validate request data and store in g',
     long_description=readme(),
-    url='https://qgit.de/py-lib/flask-expects-json',
+    url='https://github.com/fischerfredl/flask-expects-json',
+    download_url='https://github.com/fischerfredl/flask-expects-json/archive/0.1.tar.gz',
 
     version='0.1',
-    licence='MIT',
+    license='MIT',
 
     author='Alfred Melch',
     author_email='alfred.melch@gmx.de',
