@@ -1,3 +1,8 @@
+[![version](https://img.shields.io/pypi/v/flask-expects-json.svg)](https://pypi.python.org/pypi/flask-expects-json)
+[![license](https://img.shields.io/pypi/l/flask-expects-json.svg)](https://pypi.python.org/pypi/flask-expects-json)
+[![pyversions](https://img.shields.io/pypi/pyversions/flask-expects-json.svg)](https://pypi.python.org/pypi/flask-expects-json)
+[![pipeline status](https://travis-ci.org/Fischerfredl/flask-expects-json.svg?branch=master)](https://pypi.python.org/pypi/flask-expects-json)
+
 # flask-json-expects
 
 Decorator for REST endpoints in flask. Validate JSON request data.
@@ -6,8 +11,6 @@ When building json REST services I find myself already specifying json-schema fo
 
 
 This package uses jsonschema to for validation: https://pypi.python.org/pypi/jsonschema
-
-
 
 ## Usage
 
