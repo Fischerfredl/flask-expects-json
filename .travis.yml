@@ -1,0 +1,5 @@
+language: python
+
+script:
+  - python setup.py sdist
+  - python setup.py test
