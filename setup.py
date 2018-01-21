@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='flask-expects-json',
-    version='0.0.4',
+    version='0.1.0',
     description='Decorator for REST endpoints in flask. Validate JSON request data.',
     url='https://github.com/fischerfredl/flask-expects-json',
     author='Alfred Melch',
