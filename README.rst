@@ -83,6 +83,6 @@ Testing
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/flask-expects-json.svg
    :target: https://pypi.python.org/pypi/flask-expects-json
 .. |pipeline status| image:: https://travis-ci.org/Fischerfredl/flask-expects-json.svg?branch=master
-   :target: https://pypi.python.org/pypi/flask-expects-json
+   :target: https://travis-ci.org/Fischerfredl/flask-expects-json
 .. |coverage| image:: https://img.shields.io/codecov/c/github/fischerfredl/flask-expects-json.svg
    :target: https://codecov.io/gh/Fischerfredl/flask-expects-json
