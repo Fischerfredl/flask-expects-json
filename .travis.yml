@@ -6,13 +6,17 @@ language: python
 before_script:
 - sudo apt-get -qq update
 - sudo apt-get install -y pandoc
-script:
 - pip install codecov
+script:
+# convert readme
 - pandoc --from=markdown --to=rst --output=README.rst README.md
 - rm README.md
+# test sdist + unittests
 - python setup.py sdist
 - python setup.py test
-- coverage run setup.py test
+# test coverage
+- coverage run --source=flask_expects_json --branch setup.py test
+# report coverage
 - coverage report -m
 - codecov
 deploy:
