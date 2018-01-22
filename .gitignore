@@ -8,5 +8,3 @@ venv
 
 /htmlcov
 .coverage
-
-README.rst

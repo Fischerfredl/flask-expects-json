@@ -3,14 +3,9 @@ notifications:
     on_success: never
     on_failure: always
 language: python
-before_script:
-- sudo apt-get -qq update
-- sudo apt-get install -y pandoc
-- pip install codecov
+
 script:
-# convert readme
-- pandoc --from=markdown --to=rst --output=README.rst README.md
-- rm README.md
+- pip install codecov
 # test sdist + unittests
 - python setup.py sdist
 - python setup.py test
