@@ -4,8 +4,11 @@ notifications:
     on_failure: always
 language: python
 script:
+- pip install codecov
 - python setup.py sdist
 - python setup.py test
+- coverage run setup.py test
+- codecov
 deploy:
   provider: pypi
   user: Fischerfredl
