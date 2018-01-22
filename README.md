@@ -67,7 +67,3 @@ Note on self-documentation: all input and output possibilities are clearly visib
 ```python
 python setup.py test
 ```
-
-For coverage use the python coverage package. See ```/cov.sh``` for usage. 
-
-```./cov.sh``` will pip install coverage. So make sure to use it in the context of your virtual env.

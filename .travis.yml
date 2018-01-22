@@ -3,11 +3,17 @@ notifications:
     on_success: never
     on_failure: always
 language: python
+before_script:
+- sudo apt-get -qq update
+- sudo apt-get install -y pandoc
 script:
 - pip install codecov
+- pandoc --from=markdown --to=rst --output=README.rst README.md
+- rm README.md
 - python setup.py sdist
 - python setup.py test
 - coverage run setup.py test
+- coverage report -m
 - codecov
 deploy:
   provider: pypi
