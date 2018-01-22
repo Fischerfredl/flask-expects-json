@@ -1,6 +1,6 @@
 |version| |license| |pyversions| |pipeline status| |coverage|
 
-flask-json-expects
+flask-expects-json
 ==================
 
 Decorator for REST endpoints in flask. Validate JSON request data.

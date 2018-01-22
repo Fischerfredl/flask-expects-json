@@ -4,7 +4,7 @@
 [![pipeline status](https://travis-ci.org/Fischerfredl/flask-expects-json.svg?branch=master)](https://travis-ci.org/Fischerfredl/flask-expects-json)
 [![coverage](https://img.shields.io/codecov/c/github/fischerfredl/flask-expects-json.svg)](https://codecov.io/gh/Fischerfredl/flask-expects-json)
 
-# flask-json-expects
+# flask-expects-json
 
 Decorator for REST endpoints in flask. Validate JSON request data.
 
