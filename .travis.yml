@@ -4,23 +4,25 @@ notifications:
     on_failure: always
 language: python
 python:
-  - "2.7"
-  - "3.5"
-  - "3.6"
+  - '2.7'
+  - '3.4'
+  - '3.5'
+  - '3.6'
 script:
 - pip install codecov
-# test sdist + unittests
 - python setup.py sdist
 - python setup.py test
-# test coverage
 - coverage run --source=flask_expects_json --branch setup.py test
-# report coverage
 - coverage report -m
 - codecov
-deploy:
-  provider: pypi
-  user: Fischerfredl
-  password:
-    secure: jH/nwxCYSkY7dhNwGsAHB37oXNLVmTpnzYdN05KaTC0Io/n57osomHGdalMK6htTFizHE/0vvFGvL0sr7OYCGPrZ6kquuvPnglw7BaJPodp1A09TVZrlLKCWQKdeYvI/UAhdlcQK1KlfwyIfBPjGCo7K0Vr2r3KwXApyCX5g863OtcH6+fO3rGLlFyBPXAnPPKVMZnBjraUwGVI+qQ7JJd/kAlRhCo50PWd3KAtRlvCwGNhUX6F/iaQUhU8vvKuQrjK0MT8uxcSCj/LbC98LwNT/SX4bypSBYvJbVYmbmchQcgrdwrlysR3b0p65V00QVSHqNKwVeDn07edrZ/BFKhhkI1N8OtmuagL4zV7HRX+DdKA4nLj/g99TgloMo9PXmJtKk5Hwb+6P1yMv74EDYDqXfRayvKbcizNF87uLzWZCihkCptcrBPu5LeliTkaEfWUtOol7cE591mVfLr/KLOWL9o2yGfODRnkvyyMXDVj/P6dQOnwDaFywCfj8GYHgfI8vCUWEf/sDWS8pdbN9xz52q6OhhdXgVf97kepEb1ds1Yq8W1DHHrkpxDs9ue9kTigBb3vlO4nBBGFNO9YAVgh+OEXeHGhSMVMdacoPLA9l991I+xhOJs30faUL4rGMjMGkCgqXwk3VMJ0ExiiiqcmuoJfJiknz5RBqYiQXkwc=
-  on:
-    tags: true
+jobs:
+  include:
+    - stage: deploy
+      script: skip
+      deploy:
+        provider: pypi
+        user: Fischerfredl
+        password:
+          secure: jH/nwxCYSkY7dhNwGsAHB37oXNLVmTpnzYdN05KaTC0Io/n57osomHGdalMK6htTFizHE/0vvFGvL0sr7OYCGPrZ6kquuvPnglw7BaJPodp1A09TVZrlLKCWQKdeYvI/UAhdlcQK1KlfwyIfBPjGCo7K0Vr2r3KwXApyCX5g863OtcH6+fO3rGLlFyBPXAnPPKVMZnBjraUwGVI+qQ7JJd/kAlRhCo50PWd3KAtRlvCwGNhUX6F/iaQUhU8vvKuQrjK0MT8uxcSCj/LbC98LwNT/SX4bypSBYvJbVYmbmchQcgrdwrlysR3b0p65V00QVSHqNKwVeDn07edrZ/BFKhhkI1N8OtmuagL4zV7HRX+DdKA4nLj/g99TgloMo9PXmJtKk5Hwb+6P1yMv74EDYDqXfRayvKbcizNF87uLzWZCihkCptcrBPu5LeliTkaEfWUtOol7cE591mVfLr/KLOWL9o2yGfODRnkvyyMXDVj/P6dQOnwDaFywCfj8GYHgfI8vCUWEf/sDWS8pdbN9xz52q6OhhdXgVf97kepEb1ds1Yq8W1DHHrkpxDs9ue9kTigBb3vlO4nBBGFNO9YAVgh+OEXeHGhSMVMdacoPLA9l991I+xhOJs30faUL4rGMjMGkCgqXwk3VMJ0ExiiiqcmuoJfJiknz5RBqYiQXkwc=
+        on:
+          tags: true
