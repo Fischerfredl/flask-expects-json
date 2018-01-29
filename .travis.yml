@@ -3,7 +3,11 @@ notifications:
     on_success: never
     on_failure: always
 language: python
-
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+  - "3.7"
 script:
 - pip install codecov
 # test sdist + unittests
