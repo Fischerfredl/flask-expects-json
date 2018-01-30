@@ -68,3 +68,6 @@ Note on self-documentation: all input and output possibilities are clearly visib
 ```python
 python setup.py test
 ```
+
+## ToDo
+Insert default values in data if none provided.
