@@ -47,10 +47,12 @@ class TestExpects(unittest.TestCase):
     def test_validation_invalid(self):
         response = self.client.get('/schema', data='{"name": "Eggs", "price": "invalid"}')
         self.assertEqual(400, response.status_code)
+        self.assertIn('is not of type \'number\'', response.data.decode())
 
     def test_missing_parameter(self):
         response = self.client.get('/schema', data='{"name": "Eggs"}')
         self.assertEqual(400, response.status_code)
+        self.assertIn('is a required property', response.data.decode())
 
     def test_additional_parameter(self):
         response = self.client.get('/schema', data='{"name": "Eggs", "price": 34.99}')
