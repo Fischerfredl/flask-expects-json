@@ -1,5 +1,4 @@
 import unittest
-import json
 import flask
 
 from flask_expects_json import expects_json
@@ -23,7 +22,7 @@ class TestExpects(unittest.TestCase):
             },
             "required": ["price"]
         })
-        def index():
+        def schema():
             return 'happy'
 
         self.client = self.app.test_client()
@@ -35,24 +34,24 @@ class TestExpects(unittest.TestCase):
 
     def test_valid_decorator(self):
         response = self.client.get('/')
-        self.assertEqual(response.status_code, 400)
-        response = self.client.get('/', data=json.dumps(dict()))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(400, response.status_code)
+        response = self.client.get('/', data='{}')
+        self.assertEqual(200, response.status_code)
 
     def test_validation_valid(self):
-        response = self.client.get('/schema', data=json.dumps({"name": "Eggs", "price": 34.99}))
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(flask.g.data['name'], 'Eggs')
-        self.assertEqual(flask.g.data['price'], 34.99)
+        response = self.client.get('/schema', data='{"name": "Eggs", "price": 34.99}')
+        self.assertEqual(200, response.status_code)
+        self.assertEqual('Eggs', flask.g.data['name'])
+        self.assertEqual(34.99, flask.g.data['price'])
 
     def test_validation_invalid(self):
-        response = self.client.get('/schema', data=json.dumps({"name": "Eggs", "price": 'invalid'}))
-        self.assertEqual(response.status_code, 400)
+        response = self.client.get('/schema', data='{"name": "Eggs", "price": "invalid"}')
+        self.assertEqual(400, response.status_code)
 
     def test_missing_parameter(self):
-        response = self.client.get('/schema', data=json.dumps({"name": "Eggs"}))
-        self.assertEqual(response.status_code, 400)
+        response = self.client.get('/schema', data='{"name": "Eggs"}')
+        self.assertEqual(400, response.status_code)
 
     def test_additional_parameter(self):
-        response = self.client.get('/schema', data=json.dumps({"name": "Eggs", "price": 34.99}))
-        self.assertEqual(response.status_code, 200)
+        response = self.client.get('/schema', data='{"name": "Eggs", "price": 34.99}')
+        self.assertEqual(200, response.status_code)
