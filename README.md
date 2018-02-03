@@ -71,3 +71,22 @@ python setup.py test
 
 ## ToDo
 Insert default values in data if none provided.
+
+# Changelog
+
+## [Unreleased]
+
+## [1.0.6] - 2018-01-29
+- Code-style/readme changes. 
+- Add tests for Python 3.4, 3.5, 3.6
+- Changes made for proper CI and automatic release
+- Add code coverage
+
+## 1.0.0 - 2018-01-21
+### Added
+- Initial version of expects_json() decorator
+- Simple validation of request data
+- Store data in g.data
+
+[Unreleased]: https://github.com/fischerfredl/flask-expects-json/compare/1.0.6...HEAD
+[1.0.6]: https://github.com/fischerfredl/flask-expects-json/compare/1.0.0...1.0.6
