@@ -63,6 +63,10 @@ The expected json payload is recognizable through "schema". If schema is not met
 
 Note on self-documentation: all input and output possibilities are clearly visible in this snippet. 
 
+## Default values
+
+Normally validators wont touch the data. By default this package will fill in missing default values provided in the schema. The validation will be performed after this action, so default values can lead to invalid data. If you dont want this behavior set ```fill_defaults=False``` as a paramter to ```expects_json```.
+
 ## Testing
 
 ```python
@@ -76,6 +80,11 @@ Insert default values in data if none provided.
 
 ## [Unreleased]
 
+## [1.1.0] - 2018-02-03
+## Added
+- missing default values will be filled into the request data
+- can be turned off via fill_defaults=False
+
 ## [1.0.6] - 2018-01-29
 - Code-style/readme changes. 
 - Add tests for Python 3.4, 3.5, 3.6
@@ -88,5 +97,6 @@ Insert default values in data if none provided.
 - Simple validation of request data
 - Store data in g.data
 
-[Unreleased]: https://github.com/fischerfredl/flask-expects-json/compare/1.0.6...HEAD
+[Unreleased]: https://github.com/fischerfredl/flask-expects-json/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/fischerfredl/flask-expects-json/compare/1.0.6...1.1.0
 [1.0.6]: https://github.com/fischerfredl/flask-expects-json/compare/1.0.0...1.0.6

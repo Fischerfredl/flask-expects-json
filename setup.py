@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='flask-expects-json',
-    version='1.0.6',
+    version='1.1.0',
     description='Decorator for REST endpoints in flask. Validate JSON request data.',
     long_description=readme(),
     url='https://github.com/fischerfredl/flask-expects-json',

@@ -69,12 +69,59 @@ means the mimetype of the request is ignored.
 Note on self-documentation: all input and output possibilities are
 clearly visible in this snippet.
 
+Default values
+--------------
+
+Normally validators wont touch the data. By default this package will
+fill in missing default values provided in the schema. The validation
+will be performed after this action, so default values can lead to
+invalid data. If you dont want this behavior set ``fill_defaults=False``
+as a paramter to ``expects_json``.
+
 Testing
 -------
 
 .. code:: python
 
     python setup.py test
+
+ToDo
+----
+
+Insert default values in data if none provided.
+
+Changelog
+=========
+
+`Unreleased <https://github.com/fischerfredl/flask-expects-json/compare/1.1.0...HEAD>`__
+----------------------------------------------------------------------------------------
+
+`1.1.0 <https://github.com/fischerfredl/flask-expects-json/compare/1.0.6...1.1.0>`__ - 2018-02-03
+-------------------------------------------------------------------------------------------------
+
+Added
+-----
+
+-  missing default values will be filled into the request data
+-  can be turned off via fill\_defaults=False
+
+`1.0.6 <https://github.com/fischerfredl/flask-expects-json/compare/1.0.0...1.0.6>`__ - 2018-01-29
+-------------------------------------------------------------------------------------------------
+
+-  Code-style/readme changes.
+-  Add tests for Python 3.4, 3.5, 3.6
+-  Changes made for proper CI and automatic release
+-  Add code coverage
+
+1.0.0 - 2018-01-21
+------------------
+
+Added
+~~~~~
+
+-  Initial version of expects\_json() decorator
+-  Simple validation of request data
+-  Store data in g.data
 
 .. |version| image:: https://img.shields.io/pypi/v/flask-expects-json.svg
    :target: https://pypi.python.org/pypi/flask-expects-json
