@@ -63,11 +63,27 @@ This package provides a flask route decorator to validate json payload.
 The expected json payload is recognizable through "schema". If schema is
 not met the requests aborts (400) with a hinting error message.
 
-``flask.request.get_json(force=True)`` is used to get the data. This
-means the mimetype of the request is ignored.
+Mimetype checking
+-----------------
 
-Note on self-documentation: all input and output possibilities are
-clearly visible in this snippet.
+As of 1.2.0 this decorator uses ``flask.request.get_json(force=False)``
+to get the data. This means the mimetype of the request has to be
+'application/json'. Can be disabled by setting ``force=False``. Be aware
+that this creates a major security vulnerability to CSRF since CORS is
+not enforced for certain mimetypes. Thanks to Argishti Rostamian for
+noticing.
+
+.. code:: python
+
+    @app.route('/strict')
+    @expects_json()
+    def strict():
+        return 'This view will return 400 if mimetype is not \'application/json\' 
+        
+    @app.route('/insecure')
+    @expects_json({}, force=False)
+    def insecure():
+        return 'This view will validate the data no matter the mimetype.'
 
 Default values
 --------------
@@ -85,22 +101,25 @@ Testing
 
     python setup.py test
 
-ToDo
-----
-
-Insert default values in data if none provided.
-
 Changelog
 =========
 
-`Unreleased <https://github.com/fischerfredl/flask-expects-json/compare/1.1.0...HEAD>`__
+`Unreleased <https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...HEAD>`__
 ----------------------------------------------------------------------------------------
+
+`1.2.0 <https://github.com/fischerfredl/flask-expects-json/compare/1.1.0...1.2.0>`__ - 2018-02-15
+-------------------------------------------------------------------------------------------------
+
+Changed
+~~~~~~~
+
+-  Security: set force=False as default argument. Before: force=True
 
 `1.1.0 <https://github.com/fischerfredl/flask-expects-json/compare/1.0.6...1.1.0>`__ - 2018-02-03
 -------------------------------------------------------------------------------------------------
 
 Added
------
+~~~~~
 
 -  missing default values will be filled into the request data
 -  can be turned off via fill\_defaults=False
