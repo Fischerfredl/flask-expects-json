@@ -47,7 +47,9 @@ class TestDefaults(unittest.TestCase):
         self.ctx.pop()
 
     def test_default_works(self):
-        response = self.client.get('/', data='{}')
+        response = self.client.get('/',
+                                   data='{}',
+                                   content_type='application/json')
         self.assertEqual(200, response.status_code)
         self.assertIn('price', flask.g.data)
         self.assertIn('name', flask.g.data)
@@ -55,10 +57,14 @@ class TestDefaults(unittest.TestCase):
         self.assertIn('hubert', flask.g.data['name'])
 
     def test_default_gets_validated(self):
-        response = self.client.get('/invalid', data='{}')
+        response = self.client.get('/invalid',
+                                   data='{}',
+                                   content_type='application/json')
         self.assertEqual(400, response.status_code)
         self.assertIn('5 is not of type \'string\'', response.data.decode())
 
     def test_turn_default_off(self):
-        response = self.client.get('/valid', data='{}')
+        response = self.client.get('/valid',
+                                   data='{}',
+                                   content_type='application/json')
         self.assertEqual(200, response.status_code)
