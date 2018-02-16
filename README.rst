@@ -89,10 +89,9 @@ Default values
 --------------
 
 Normally validators wont touch the data. By default this package will
-fill in missing default values provided in the schema. The validation
-will be performed after this action, so default values can lead to
-invalid data. If you dont want this behavior set ``fill_defaults=False``
-as a paramter to ``expects_json``.
+not fill in missing default values provided in the schema. If you want
+to you can set ``fill_default=True`` explicitly. The validation will be
+performed after this action, so default values can lead to invalid data.
 
 Testing
 -------
@@ -106,6 +105,15 @@ Changelog
 
 `Unreleased <https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...HEAD>`__
 ----------------------------------------------------------------------------------------
+
+[1.3.0] - 2018-02-16
+--------------------
+
+Changed
+~~~~~~~
+
+-  Defaults wont be filled in request data by default. Set
+   fill\_defaults=True explicitly.
 
 `1.2.0 <https://github.com/fischerfredl/flask-expects-json/compare/1.1.0...1.2.0>`__ - 2018-02-15
 -------------------------------------------------------------------------------------------------
