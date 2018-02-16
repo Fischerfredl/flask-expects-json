@@ -103,8 +103,22 @@ Testing
 Changelog
 =========
 
-`Unreleased <https://github.com/fischerfredl/flask-expects-json/compare/1.3.0...HEAD>`__
+`Unreleased <https://github.com/fischerfredl/flask-expects-json/compare/1.3.1...HEAD>`__
 ----------------------------------------------------------------------------------------
+
+`1.3.1 <https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...1.3.1>`__
+------------------------------------------------------------------------------------
+
+Changed
+~~~~~~~
+
+-  Changed error message when get\_json() fails.
+
+Fixed
+~~~~~
+
+-  Bugfix in DefaultValidatingDraft4Validator when trying to set a
+   default value on strings.
 
 `1.3.0 <https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...1.3.0>`__ - 2018-02-16
 -------------------------------------------------------------------------------------------------

@@ -13,7 +13,8 @@ class TestDefaults(unittest.TestCase):
             "type": "object",
             "properties": {
                 "price": {"type": "number", "default": 5.3},
-                "name": {"type": "string", "default": "hubert"}
+                "name": {"type": "string", "default": "hubert"},
+                "tags": {"type": "array"}
             }
         }, fill_defaults=True)
         def happy():

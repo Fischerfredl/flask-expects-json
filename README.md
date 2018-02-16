@@ -89,6 +89,8 @@ python setup.py test
 # Changelog
 
 ## [Unreleased]
+
+## [1.3.1]
 ### Changed
 - Changed error message when get_json() fails. 
 
@@ -120,7 +122,8 @@ python setup.py test
 - Simple validation of request data
 - Store data in g.data
 
-[Unreleased]: https://github.com/fischerfredl/flask-expects-json/compare/1.3.0...HEAD
+[Unreleased]: https://github.com/fischerfredl/flask-expects-json/compare/1.3.1...HEAD
+[1.3.1]: https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...1.3.1
 [1.3.0]: https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/fischerfredl/flask-expects-json/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/fischerfredl/flask-expects-json/compare/1.0.6...1.1.0
