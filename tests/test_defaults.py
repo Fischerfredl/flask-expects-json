@@ -68,3 +68,19 @@ class TestDefaults(unittest.TestCase):
                                    data='{}',
                                    content_type='application/json')
         self.assertEqual(200, response.status_code)
+
+    def test_setdefault_on_string(self):
+        @self.app.route('/strings')
+        @expects_json({
+            "type": "object",
+            "properties": {
+                "name": {"type": "string", "default": "hubert"}
+            }
+        }, fill_defaults=True)
+        def default_on_string():
+            return 'happy'
+
+        response = self.client.get('/strings',
+                                   data='"invalid"',
+                                   content_type='application/json')
+        self.assertEqual(400, response.status_code)

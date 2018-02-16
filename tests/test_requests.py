@@ -51,5 +51,4 @@ class TestExpects(unittest.TestCase):
                                    data='null',
                                    content_type='application/json')
         self.assertEqual(400, response.status_code)
-        print(response.data)
         self.assertIn('Failed to decode', response.data.decode())

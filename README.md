@@ -89,6 +89,11 @@ python setup.py test
 # Changelog
 
 ## [Unreleased]
+### Changed
+- Changed error message when get_json() fails. 
+
+### Fixed
+- Bugfix in DefaultValidatingDraft4Validator when trying to set a default value on strings.
 
 ## [1.3.0] - 2018-02-16
 ### Changed
