@@ -15,7 +15,7 @@ def expects_json(schema=None, force=False, fill_defaults=False):
             data = request.get_json(force=force)
 
             if data is None:
-                return abort(400, 'This view expects mimetype application/json.')
+                return abort(400, 'Failed to decode JSON object')
 
             try:
                 if fill_defaults:
