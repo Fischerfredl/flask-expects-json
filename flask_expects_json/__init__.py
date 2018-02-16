@@ -5,7 +5,7 @@ from jsonschema import validate, ValidationError
 from .default_validator import DefaultValidatingDraft4Validator
 
 
-def expects_json(schema=None, force=False, fill_defaults=True):
+def expects_json(schema=None, force=False, fill_defaults=False):
     if schema is None:
         schema = dict()
 

@@ -15,7 +15,7 @@ class TestDefaults(unittest.TestCase):
                 "price": {"type": "number", "default": 5.3},
                 "name": {"type": "string", "default": "hubert"}
             }
-        })
+        }, fill_defaults=True)
         def happy():
             return 'happy'
 
@@ -25,7 +25,7 @@ class TestDefaults(unittest.TestCase):
             "properties": {
                 "name": {"type": "string", "default": 5}
             }
-        })
+        }, fill_defaults=True)
         def invalid_default():
             return ''
 
@@ -35,7 +35,7 @@ class TestDefaults(unittest.TestCase):
             "properties": {
                 "name": {"type": "string", "default": 5}
             }
-        }, fill_defaults=False)
+        })
         def default():
             return ''
 
@@ -63,7 +63,7 @@ class TestDefaults(unittest.TestCase):
         self.assertEqual(400, response.status_code)
         self.assertIn('5 is not of type \'string\'', response.data.decode())
 
-    def test_turn_default_off(self):
+    def test_default_off_by_default(self):
         response = self.client.get('/valid',
                                    data='{}',
                                    content_type='application/json')

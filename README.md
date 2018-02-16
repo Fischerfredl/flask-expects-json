@@ -78,7 +78,7 @@ def insecure():
 
 ## Default values
 
-Normally validators wont touch the data. By default this package will fill in missing default values provided in the schema. The validation will be performed after this action, so default values can lead to invalid data. If you dont want this behavior set ```fill_defaults=False``` as a paramter to ```expects_json```.
+Normally validators wont touch the data. By default this package will not fill in missing default values provided in the schema. If you want to you can set `fill_default=True` explicitly. The validation will be performed after this action, so default values can lead to invalid data.
 
 ## Testing
 
@@ -89,6 +89,10 @@ python setup.py test
 # Changelog
 
 ## [Unreleased]
+
+## [1.3.0] - 2018-02-16
+### Changed
+- Defaults wont be filled in request data by default. Set fill_defaults=True explicitly.
 
 ## [1.2.0] - 2018-02-15
 ### Changed
