@@ -103,11 +103,11 @@ Testing
 Changelog
 =========
 
-`Unreleased <https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...HEAD>`__
+`Unreleased <https://github.com/fischerfredl/flask-expects-json/compare/1.3.0...HEAD>`__
 ----------------------------------------------------------------------------------------
 
-[1.3.0] - 2018-02-16
---------------------
+`1.3.0 <https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...1.3.0>`__ - 2018-02-16
+-------------------------------------------------------------------------------------------------
 
 Changed
 ~~~~~~~

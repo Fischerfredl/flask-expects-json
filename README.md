@@ -115,7 +115,8 @@ python setup.py test
 - Simple validation of request data
 - Store data in g.data
 
-[Unreleased]: https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/fischerfredl/flask-expects-json/compare/1.3.0...HEAD
+[1.3.0]: https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/fischerfredl/flask-expects-json/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/fischerfredl/flask-expects-json/compare/1.0.6...1.1.0
 [1.0.6]: https://github.com/fischerfredl/flask-expects-json/compare/1.0.0...1.0.6
