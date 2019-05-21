@@ -23,7 +23,7 @@ def expects_json(schema=None, force=False, fill_defaults=False):
                 else:
                     validate(data, schema)
             except ValidationError as e:
-                return abort(400, e.message)
+                return abort(400, str(e))
 
             g.data = data
             return f(*args, **kwargs)
