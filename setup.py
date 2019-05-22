@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 def readme():
-    with open('README.rst') as f:
+    with open('README.md') as f:
         return f.read()
 
 
@@ -11,6 +11,7 @@ setup(
     version='1.3.1',
     description='Decorator for REST endpoints in flask. Validate JSON request data.',
     long_description=readme(),
+    long_description_content_type="text/markdown",
     url='https://github.com/fischerfredl/flask-expects-json',
     author='Alfred Melch',
     author_email='alfred.melch@gmx.de',
