@@ -89,38 +89,32 @@ python setup.py test
 # Changelog
 
 ## [Unreleased]
+- Updated dependencies to new major versions.
+- Removed Python 3.4 support (as jsonschema did)
 
 ## [1.3.1]
-### Changed
 - Changed error message when get_json() fails. 
-
-### Fixed
 - Bugfix in DefaultValidatingDraft4Validator when trying to set a default value on strings.
 
 ## [1.3.0] - 2018-02-16
-### Changed
-- Defaults wont be filled in request data by default. Set fill_defaults=True explicitly.
+- Changed: Defaults wont be filled in request data by default. Set fill_defaults=True explicitly.
 
 ## [1.2.0] - 2018-02-15
-### Changed
-- Security: set force=False as default argument. Before: force=True
+- Security: set force=False as default argument for mimetype checking. Before: force=True for convenience
 
 ## [1.1.0] - 2018-02-03
-### Added
-- missing default values will be filled into the request data
-- can be turned off via fill_defaults=False
+- Added missing default values will be automatically filled into the request data
+- Added parameter fill_defaults
 
 ## [1.0.6] - 2018-01-29
-- Code-style/readme changes. 
-- Add tests for Python 3.4, 3.5, 3.6
-- Changes made for proper CI and automatic release
-- Add code coverage
+- Added tests for Python 3.4, 3.5, 3.6
+- Added code coverage
+- Changed code-style/readme. 
 
 ## 1.0.0 - 2018-01-21
-### Added
-- Initial version of expects_json() decorator
-- Simple validation of request data
-- Store data in g.data
+- Added initial version of expects_json() decorator
+- Added simple validation of request data
+- Added store data in g.data
 
 [Unreleased]: https://github.com/fischerfredl/flask-expects-json/compare/1.3.1...HEAD
 [1.3.1]: https://github.com/fischerfredl/flask-expects-json/compare/1.2.0...1.3.1
