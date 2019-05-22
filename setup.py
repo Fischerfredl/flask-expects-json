@@ -27,8 +27,8 @@ setup(
     keywords=['flask', 'json', 'validation', 'schema', 'jsonschema'],
     packages=find_packages(exclude=['tests.*', 'tests']),
     install_requires=[
-        'flask>=0.12.2',
-        'jsonschema>=2.6.0'
+        'flask>=1.0.2',
+        'jsonschema>=3.0.1'
     ],
     test_suite='tests.test_suite'
 )
