@@ -1,10 +1,7 @@
-/.idea
+.eggs/
+dist/
+venv/
+htmlcov/
 *.pyc
-venv
-
-/dist
-/*.egg-info
-/.eggs
-
-/htmlcov
+*.egg-info
 .coverage
