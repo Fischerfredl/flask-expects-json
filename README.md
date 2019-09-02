@@ -78,7 +78,7 @@ def insecure():
 
 ## Default values
 
-Normally validators wont touch the data. By default this package will not fill in missing default values provided in the schema. If you want to you can set `fill_default=True` explicitly. The validation will be performed after this action, so default values can lead to invalid data.
+Normally validators wont touch the data. By default this package will not fill in missing default values provided in the schema. If you want to you can set `fill_defaults=True` explicitly. The validation will be performed after this action, so default values can lead to invalid data.
 
 ## Testing
 
