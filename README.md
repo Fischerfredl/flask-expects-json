@@ -88,9 +88,13 @@ python setup.py test
 
 # Changelog
 
-## [Unreleased]
+## Unreleased
+
+## 1.4.0 - 2019-09-02
 - Updated dependencies to new major versions.
 - Removed Python 3.4 support (as jsonschema did)
+- Fixed: Typo in readme
+- Changed: Pass whole error object to the 400 abort on schema validation error
 
 ## [1.3.1]
 - Changed error message when get_json() fails. 
