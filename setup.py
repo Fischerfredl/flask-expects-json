@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     url='https://github.com/fischerfredl/flask-expects-json',
     author='Alfred Melch',
-    author_email='alfred.melch@gmx.de',
+    author_email='dev@melch.pro',
     license='MIT',
     classifiers=[
         'Framework :: Flask',
