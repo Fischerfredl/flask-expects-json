@@ -12,6 +12,9 @@ def expects_json(schema=None, force=False, fill_defaults=False):
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
+            if request.method in ['HEAD', 'GET', 'DELETE']:
+                return f(*args, **kwargs)
+            
             data = request.get_json(force=force)
 
             if data is None:
