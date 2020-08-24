@@ -80,6 +80,17 @@ def insecure():
 
 Normally validators wont touch the data. By default this package will not fill in missing default values provided in the schema. If you want to you can set `fill_defaults=True` explicitly. The validation will be performed after this action, so default values can lead to invalid data.
 
+## Skip validation methods
+
+If you want to skip the validation for certain HTTP methods, specify them with `ignore_for=[]`. Typical methods that do not expect a body are GET, HEAD and DELETE. Thanks to @mtheos for implementing this.
+
+```python
+@app.route('/', methods=['GET', 'POST'])
+@expects_json(schema, ignore_for=['GET'])
+def register():
+    return 
+```
+
 ## Testing
 
 ```python
@@ -89,6 +100,9 @@ python setup.py test
 # Changelog
 
 ## Unreleased
+
+## 1.5.0 - 2020-08-24
+- Feature: ignore validation for certain HTTP methods. (thanks @mtheos)
 
 ## 1.4.0 - 2019-09-02
 - Updated dependencies to new major versions.
