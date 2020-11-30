@@ -13,6 +13,14 @@ When building json REST services I find myself already specifying json-schema fo
 
 This package uses jsonschema to for validation: https://pypi.python.org/pypi/jsonschema
 
+## Installation
+
+Use pip to install the package from PyPI:
+
+```bash
+pip install flask-expects-json
+```
+
 ## Usage
 
 This package provides a flask route decorator to validate json payload.
