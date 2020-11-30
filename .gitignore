@@ -1,5 +1,6 @@
 .eggs/
 dist/
+build/
 venv/
 htmlcov/
 *.pyc
