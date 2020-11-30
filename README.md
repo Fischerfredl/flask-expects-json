@@ -91,6 +91,28 @@ def register():
     return 
 ```
 
+## Error handling
+
+On validation failure the library calls `flask.abort` and passes an 400 error code and the validation error.
+By default this creates an HTML error page and displays the error message.
+To customize the behavior use the error handling provided by flask ([docs](https://flask.palletsprojects.com/en/1.1.x/errorhandling/#error-handlers)).
+This can be useful to e.g hide the validation message from users or provide a JSON response.
+
+The original [ValidationError](https://python-jsonschema.readthedocs.io/en/latest/errors/#jsonschema.exceptions.ValidationError) is passed to `flask.abort`, which itself passes arguments to `werkzeug.exceptions.HTTPException` so it can be retrieved on `error.description` like this:
+
+```python
+from flask import make_response, jsonify
+from jsonschema import ValidationError
+
+@ app.errorhandler(400)
+def bad_request(error):
+    if isinstance(error.description, ValidationError):
+        original_error = error.description
+        return make_response(jsonify({'error': original_error.message}), 400)
+    # handle other "Bad Request"-errors
+    return error
+```
+
 ## Testing
 
 ```python
