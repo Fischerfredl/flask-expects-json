@@ -115,9 +115,20 @@ def bad_request(error):
 
 ## Testing
 
-```python
-python setup.py test
+The following are the steps to create a virtual environment into a folder named "venv" and install the requirements.
+
+```bash
+# Create virtualenv
+python3 -m venv venv
+# activate virtualenv
+source venv/bin/activate
+# update packages
+pip install --upgrade pip setuptools wheel
+# install requirements
+python setup.py install
 ```
+
+Tests can be run with `python setup.py test` when the virtualenv is active.
 
 # Changelog
 
