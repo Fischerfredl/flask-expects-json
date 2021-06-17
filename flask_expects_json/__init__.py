@@ -1,3 +1,4 @@
+import logging
 from functools import wraps
 from flask import request, g, abort
 
@@ -5,7 +6,14 @@ from jsonschema import validate, ValidationError
 from .default_validator import DefaultValidatingDraft4Validator
 
 
-def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None):
+def expects_json(
+    schema=None,
+    force=False, 
+    fill_defaults=False, 
+    ignore_for=None, 
+    logger=None, 
+    log_level=logging.WARNING
+):
     if schema is None:
         schema = dict()
     if ignore_for is not None:
@@ -21,6 +29,8 @@ def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None)
             data = request.get_json(force=force)
 
             if data is None:
+                if logger:
+                    logger.log(log_level, 'JSON validation failed: Failed to decode JSON object')
                 return abort(400, 'Failed to decode JSON object')
 
             try:
@@ -29,6 +39,8 @@ def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None)
                 else:
                     validate(data, schema)
             except ValidationError as e:
+                if logger:
+                    logger.log(log_level, 'JSON validation failed: %s' % e)
                 return abort(400, e)
 
             g.data = data
