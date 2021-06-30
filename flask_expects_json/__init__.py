@@ -1,8 +1,8 @@
 from functools import wraps
 from flask import request, g, abort
 
-from jsonschema import validate, ValidationError
-from .default_validator import DefaultValidatingDraft4Validator
+from jsonschema import validate, ValidationError, FormatChecker
+from .default_validator import ExtendedDefaultValidator
 
 
 def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None):
@@ -24,10 +24,12 @@ def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None)
                 return abort(400, 'Failed to decode JSON object')
 
             try:
+                format_checker = FormatChecker()
+
                 if fill_defaults:
-                    DefaultValidatingDraft4Validator(schema).validate(data)
+                    ExtendedDefaultValidator(schema, format_checker=format_checker).validate(data)
                 else:
-                    validate(data, schema)
+                    validate(data, schema, format_checker=format_checker)
             except ValidationError as e:
                 return abort(400, e)
 

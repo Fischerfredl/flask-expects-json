@@ -1,4 +1,5 @@
-from jsonschema import Draft4Validator, validators
+from jsonschema import validators
+from jsonschema.validators import _LATEST_VERSION as LATEST_VALIDATOR
 
 
 def extend_with_default(validator_class):
@@ -19,4 +20,4 @@ def extend_with_default(validator_class):
     )
 
 
-DefaultValidatingDraft4Validator = extend_with_default(Draft4Validator)
+ExtendedDefaultValidator = extend_with_default(LATEST_VALIDATOR)
