@@ -84,6 +84,10 @@ def insecure():
     return 'This view will validate the data no matter the mimetype.'
 ```
 
+## Format checking
+
+As of 1.6.0 you can set `check_formats=True` or `check_formats=['list of format']` to enable validating formats such as `email` `date-time`. This is set to `False` by default.
+
 ## Default values
 
 Normally validators wont touch the data. By default this package will not fill in missing default values provided in the schema. If you want to you can set `fill_defaults=True` explicitly. The validation will be performed after this action, so default values can lead to invalid data.

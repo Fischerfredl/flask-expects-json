@@ -1,11 +1,13 @@
 from functools import wraps
+from typing import Iterable
+
 from flask import request, g, abort
 
 from jsonschema import validate, ValidationError, FormatChecker
 from .default_validator import ExtendedDefaultValidator
 
 
-def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None):
+def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None, check_formats=False):
     if schema is None:
         schema = dict()
     if ignore_for is not None:
@@ -23,9 +25,17 @@ def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None)
             if data is None:
                 return abort(400, 'Failed to decode JSON object')
 
-            try:
-                format_checker = FormatChecker()
+            format_checker = None
 
+            if check_formats:
+                if isinstance(check_formats, Iterable):
+                    format_checker = FormatChecker(check_formats)
+                elif isinstance(check_formats, bool):
+                    format_checker = FormatChecker()
+                else:
+                    return abort(400, 'check_format must be bool or iterable')
+
+            try:
                 if fill_defaults:
                     ExtendedDefaultValidator(schema, format_checker=format_checker).validate(data)
                 else:
