@@ -146,6 +146,9 @@ Tests can be run with `python setup.py test` when the virtualenv is active.
 
 ## Unreleased
 
+## 1.6.0 - 2021-08-09
+- Feature: added optional format validation (thanks @CrafterSvK)
+
 ## 1.5.0 - 2020-08-24
 - Feature: ignore validation for certain HTTP methods. (thanks @mtheos)
 
