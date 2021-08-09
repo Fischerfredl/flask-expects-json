@@ -60,7 +60,7 @@ def register():
         return jsonify(dict(message=e.message)), 409
 
     # happy path: json response
-    resp = jsonify(dict(auth_token=user.encode_auth_token(), user=user.to_dict()})
+    resp = jsonify(dict(auth_token=user.encode_auth_token(), user=user.to_dict()))
     resp.headers['Location'] = url_for('users.get_user', user_id=user.id)
     return resp, 201
 ```
@@ -116,7 +116,7 @@ The original [ValidationError](https://python-jsonschema.readthedocs.io/en/lates
 from flask import make_response, jsonify
 from jsonschema import ValidationError
 
-@ app.errorhandler(400)
+@app.errorhandler(400)
 def bad_request(error):
     if isinstance(error.description, ValidationError):
         original_error = error.description
