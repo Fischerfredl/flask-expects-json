@@ -62,7 +62,7 @@ class TestDefaults(unittest.TestCase):
                                    data='{}',
                                    content_type='application/json')
         self.assertEqual(400, response.status_code)
-        self.assertIn('5 is not of type \'string\'', response.data.decode())
+        self.assertIn('5 is not of type &#x27;string&#x27;', response.data.decode())
 
     def test_default_off_by_default(self):
         response = self.client.get('/valid',

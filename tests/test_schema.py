@@ -45,7 +45,7 @@ class TestExpects(unittest.TestCase):
                                    data='{"name": "Eggs", "price": "invalid"}',
                                    content_type='application/json')
         self.assertEqual(400, response.status_code)
-        self.assertIn('is not of type \'number\'', response.data.decode())
+        self.assertIn('is not of type &#x27;number&#x27;', response.data.decode())
 
     def test_missing_parameter(self):
         response = self.client.get('/schema',
