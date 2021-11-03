@@ -29,5 +29,8 @@ setup(
         'flask>=1.0.2',
         'jsonschema>=3.0.1'
     ],
+    extras_require={
+        "async": ["flask[async]>=2.0.0"],
+    },
     test_suite='tests.test_suite'
 )

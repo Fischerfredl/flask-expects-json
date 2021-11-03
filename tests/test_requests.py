@@ -13,6 +13,11 @@ class TestExpects(unittest.TestCase):
         def no_schema():
             return 'happy'
 
+        @self.app.route('/no_schema_async')
+        @expects_json()
+        async def no_schema_async():
+            return 'happy'
+
         @self.app.route('/schema')
         @expects_json({
             "type": "object",
@@ -31,6 +36,13 @@ class TestExpects(unittest.TestCase):
 
     def test_valid_decorator(self):
         response = self.client.get('/')
+        self.assertEqual(400, response.status_code)
+        self.assertIn('Failed to decode', response.data.decode())
+        response = self.client.get('/', data='{}', content_type='application/json')
+        self.assertEqual(200, response.status_code)
+
+    def test_valid_decorator_no_schema_async(self):
+        response = self.client.get('/no_schema_async')
         self.assertEqual(400, response.status_code)
         self.assertIn('Failed to decode', response.data.decode())
         response = self.client.get('/', data='{}', content_type='application/json')
