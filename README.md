@@ -21,6 +21,15 @@ Use pip to install the package from PyPI:
 pip install flask-expects-json
 ```
 
+If you are intending to install async version:
+
+```bash
+pip install flask-expects-json[async]
+```
+Note: the above command is not necessary in order to install a version
+of flask-expect-json that supports async, however, the above command
+will ensure `flask[async]` is installed as a dependency.
+
 ## Usage
 
 This package provides a flask route decorator to validate json payload.
