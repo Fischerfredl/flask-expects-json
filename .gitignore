@@ -6,6 +6,3 @@ htmlcov/
 *.pyc
 *.egg-info
 .coverage
-
-# JetBrain IDE
-.idea
