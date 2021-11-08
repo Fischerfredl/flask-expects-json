@@ -1,7 +1,7 @@
 from functools import wraps
 from typing import Iterable
 
-from flask import request, g, abort
+from flask import request, g, abort, current_app
 
 from jsonschema import validate, ValidationError, FormatChecker
 from .default_validator import ExtendedDefaultValidator
@@ -44,6 +44,10 @@ def expects_json(schema=None, force=False, fill_defaults=False, ignore_for=None,
                 return abort(400, e)
 
             g.data = data
-            return f(*args, **kwargs)
+
+            if hasattr(current_app, "ensure_sync"):
+                return current_app.ensure_sync(f)(*args, **kwargs)
+            else:
+                return f(*args, **kwargs)
         return decorated_function
     return decorator

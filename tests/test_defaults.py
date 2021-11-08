@@ -40,6 +40,16 @@ class TestDefaults(unittest.TestCase):
         def default():
             return ''
 
+        @self.app.route('/valid_async')
+        @expects_json({
+            "type": "object",
+            "properties": {
+                "name": {"type": "string", "default": 5}
+            }
+        })
+        async def default_async():
+            return ''
+
         self.client = self.app.test_client()
         self.ctx = self.app.app_context()
         self.ctx.push()
@@ -56,6 +66,12 @@ class TestDefaults(unittest.TestCase):
         self.assertIn('name', flask.g.data)
         self.assertEqual(5.3, flask.g.data['price'])
         self.assertIn('hubert', flask.g.data['name'])
+
+    def test_async_default_works(self):
+        response = self.client.get('/valid_async',
+                                   data='{}',
+                                   content_type='application/json')
+        self.assertEqual(200, response.status_code)
 
     def test_default_gets_validated(self):
         response = self.client.get('/invalid',
