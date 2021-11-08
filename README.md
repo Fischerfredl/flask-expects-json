@@ -155,6 +155,9 @@ Tests can be run with `python setup.py test` when the virtualenv is active.
 
 ## Unreleased
 
+## 1.7.0 - 2021-11-08
+- Feature: support flask async (thanks @jiashuChen)
+
 ## 1.6.0 - 2021-08-09
 - Feature: added optional format validation (thanks @CrafterSvK)
 
