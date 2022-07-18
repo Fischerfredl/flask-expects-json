@@ -97,6 +97,11 @@ def insecure():
 
 As of 1.6.0 you can set `check_formats=True` or `check_formats=['list of format']` to enable validating formats such as `email` `date-time`. This is set to `False` by default.
 
+Be aware that python-jsonschema requires certain packages to be installed for some formats to work.
+See the [documentation](https://python-jsonschema.readthedocs.io/en/stable/validate/#validating-formats) for a table of required packages.
+E.g. the format `date-time` requires the package `rfc3339-validator` to be installed.
+If the package is not installed the validation will succeed without throwing an error.
+
 ## Default values
 
 Normally validators wont touch the data. By default this package will not fill in missing default values provided in the schema. If you want to you can set `fill_defaults=True` explicitly. The validation will be performed after this action, so default values can lead to invalid data.
